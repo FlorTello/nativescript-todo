@@ -1,0 +1,19 @@
+<TabView androidTabsPosition="bottom">
+	<page-router-outlet
+		*tabItem="{ title: 'All', iconSource: getIconSource('home') }"
+		name="allTab"
+	>
+	</page-router-outlet>
+
+	<page-router-outlet
+		*tabItem="{ title: 'Active', iconSource: getIconSource('browse') }"
+		name="activeTab"
+	>
+	</page-router-outlet>
+
+	<page-router-outlet
+		*tabItem="{ title: 'Completed', iconSource: getIconSource('search') }"
+		name="searchTab"
+	>
+	</page-router-outlet>
+</TabView>

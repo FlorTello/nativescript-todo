@@ -1,0 +1,17 @@
+<ActionBar class="action-bar">
+	<Label class="action-bar-title" text="List"></Label>
+</ActionBar>
+
+<GridLayout class="page page-content">
+	<ListView [items]="items" class="list-group">
+		<ng-template let-item="item">
+			<Label
+				[nsRouterLink]="['../item', item.id]"
+				[text]="item.name"
+				class="list-group-item"
+			></Label>
+		</ng-template>
+	</ListView>
+	<!-- <Button text="+" (tab)="(onClickAdd)" class="btn btn-primary"> </Button> -->
+	<!-- <Switch checked="true" class="switch" horizontalAlignment="center"></Switch> -->
+</GridLayout>
