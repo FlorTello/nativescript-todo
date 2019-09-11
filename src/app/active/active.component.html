@@ -1,8 +1,39 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Active"></Label>
+	<Label class="action-bar-title" text="Active"></Label>
 </ActionBar>
 
 <GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf1ea;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+	<ListView [items]="items" class="list-group" (itemTap)="onItemTap($event)">
+		<!-- <ng-template let-item="item">
+            <Label
+				[nsRouterLink]="['../../item/item', item.id]"
+				[text]="item.name"
+				class="list-group-item"
+			></Label>
+        </ng-template> -->
+		<ng-template let-item="item">
+			<FlexboxLayout flexDirection="row" class="list-group-item">
+				<!-- <Image [src]="country.imageSrc" class="thumb img-circle"></Image> -->
+				<Switch
+					[checked]="validateStatus(item)"
+					class="switch"
+					horizontalAlignment="center"
+				></Switch>
+				<Label
+					[text]="item.name"
+					class="list-group-item-heading"
+					verticalAlignment="center"
+					style="width: 60%"
+				></Label>
+			</FlexboxLayout>
+		</ng-template>
+	</ListView>
+	<Label
+		*ngIf="items.length == 0"
+		class="page-icon fa"
+		text="&#xf1ea;"
+	></Label>
+
+	<!-- <Button text="+" (tab)="(onClickAdd)" class="btn btn-primary"> </Button> -->
+	<!-- <Switch checked="true" class="switch" horizontalAlignment="center"></Switch> -->
 </GridLayout>

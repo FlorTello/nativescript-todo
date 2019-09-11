@@ -1,16 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { DataService, ITodoItem, StatusTodo } from '../shared/data.service';
 
 @Component({
-    selector: "Completed",
+    selector: 'Completed',
     moduleId: module.id,
-    templateUrl: "./completed.component.html"
+    templateUrl: './completed.component.html',
 })
 export class CompletedComponent implements OnInit {
-    constructor() {
-        // Use the constructor to inject services.
+    items: Array<ITodoItem> = []
+    constructor(private _dataService: DataService) {
     }
 
     ngOnInit(): void {
-        // Use the "ngOnInit" handler to initialize data for the view.
+        this.items = this._dataService.getItemsByStatus(StatusTodo.COMPLETED);
     }
 }

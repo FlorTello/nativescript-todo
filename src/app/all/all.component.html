@@ -2,16 +2,43 @@
 	<Label class="action-bar-title" text="List"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
+<StackLayout class="page page-content">
+	<SearchBar
+		hint="Search name or description"
+		[text]="searchValue"
+		(submit)="onSearchSubmit($event)"
+	></SearchBar>
 	<ListView [items]="items" class="list-group">
 		<ng-template let-item="item">
-			<Label
-				[nsRouterLink]="['../item', item.id]"
-				[text]="item.name"
-				class="list-group-item"
-			></Label>
+			<FlexboxLayout flexDirection="row" class="list-group-item">
+				<Switch
+					[checked]="validateStatus(item)"
+					class="switch"
+					horizontalAlignment="center"
+				></Switch>
+				<Label
+					[nsRouterLink]="['../item', item.id]"
+					[text]="item.name"
+					class="list-group-item"
+				></Label>
+				<Label
+					alignSelf="flex-end"
+					width="50"
+					height="50"
+					class="fa"
+					text="&#xf1f8;"
+				></Label>
+			</FlexboxLayout>
 		</ng-template>
 	</ListView>
-	<!-- <Button text="+" (tab)="(onClickAdd)" class="btn btn-primary"> </Button> -->
-	<!-- <Switch checked="true" class="switch" horizontalAlignment="center"></Switch> -->
-</GridLayout>
+	<AbsoluteLayout>
+		<Button
+			text="+"
+			(tab)="onClickAdd($event)"
+			class="btn btn-primary"
+			right="10"
+			bottom="10"
+		>
+		</Button>
+	</AbsoluteLayout>
+</StackLayout>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
-import { DataService, IDataItem } from "../../shared/data.service";
+import { DataService, ITodoItem } from "../../shared/data.service";
 
 @Component({
     selector: "ItemDetail",
@@ -9,7 +9,7 @@ import { DataService, IDataItem } from "../../shared/data.service";
     templateUrl: "./item-detail.component.html"
 })
 export class ItemDetailComponent implements OnInit {
-    item: IDataItem;
+    item: ITodoItem;
 
     constructor(
         private _data: DataService,

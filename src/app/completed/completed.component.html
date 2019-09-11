@@ -1,8 +1,17 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Search"></Label>
+	<Label class="action-bar-title" text="Completed"></Label>
 </ActionBar>
 
 <GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf002;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+	<ListView [items]="items" class="list-group">
+		<ng-template let-item="item">
+			<Label
+				[nsRouterLink]="['../item', item.id]"
+				[text]="item.name"
+				class="list-group-item"
+			></Label>
+		</ng-template>
+	</ListView>
+	<!-- <Button text="+" (tab)="(onClickAdd)" class="btn btn-primary"> </Button> -->
+	<!-- <Switch checked="true" class="switch" horizontalAlignment="center"></Switch> -->
 </GridLayout>
